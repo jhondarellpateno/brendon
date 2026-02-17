@@ -53,7 +53,7 @@ public class REG extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         jLabel8.setText("\"Designed & Developed by Bestie Cafe\".");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 700));
 
@@ -102,7 +102,7 @@ public class REG extends javax.swing.JFrame {
         jPanel2.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
 
         jLabel6.setText("Already have an account?");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 404, -1, 30));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, 30));
 
         jToggleButton2.setText("LOG IN");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class REG extends javax.swing.JFrame {
                 jToggleButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 86, -1));
+        jPanel2.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 86, -1));
 
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

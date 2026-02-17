@@ -5,6 +5,9 @@
  */
 package main;
 
+import staff.staffdash;
+import admin.admindash;
+import config.UserSession;
 import config.config;
 import java.util.List;
 import java.util.Map;
@@ -63,7 +66,7 @@ public class LOG extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         jLabel8.setText("\"Designed & Developed by Bestie Cafe\".");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 520));
 
@@ -102,7 +105,7 @@ public class LOG extends javax.swing.JFrame {
         jPanel2.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
 
         jLabel6.setText("I don't have an account.");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
         jToggleButton2.setText("REGISTER");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +113,7 @@ public class LOG extends javax.swing.JFrame {
                 jToggleButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, -1, -1));
+        jPanel2.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, -1, -1));
         jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 274, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 540, 520));
@@ -145,23 +148,27 @@ public class LOG extends javax.swing.JFrame {
         if (result.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Wrong Username or Password!", "Message", JOptionPane.ERROR_MESSAGE);
         } else {
-            Map<String, Object> user = result.get(0);
-            String name = user.get("username").toString();
-            String stat = user.get("status").toString();
-            String type = user.get("type").toString();
-            String emails = user.get("email").toString();
-
-            if (stat.equals("Pending")) {
+            
+            
+            UserSession.setU_id( ( int )result.get(0).get("id"));
+            UserSession.setU_name(result.get(0).get("username").toString());
+            UserSession.setU_email(result.get(0).get("email").toString());
+            UserSession.setU_type(result.get(0).get("type").toString());
+            UserSession.setU_status(result.get(0).get("status").toString());
+            
+            if (UserSession.getU_status().equals("Pending")) {
                 JOptionPane.showMessageDialog(null, "Account is pending. Please contact admin for approval.");
-            } else if (stat.equals("Active")){
-                JOptionPane.showMessageDialog(null, "Hello " + name + "!");
+            } else if (UserSession.getU_status().equals("Active")){
+                JOptionPane.showMessageDialog(null, "Hello " + UserSession.getU_name() + "!");
 
-                if (type.equals("Admin")) {
-                    admindash dash = new admindash(name, emails, type);
+                if (UserSession.getU_type().equals("Admin")) {
+                    admindash dash = new admindash();
                     dash.setVisible(true);
                     dash.setLocationRelativeTo(null);
-                } else if (type.equals("Staff")) {
-                    staffdash staff = new staffdash(name, emails, type);
+                    this.dispose();
+                    
+                } else if (UserSession.getU_type().equals("Staff")) {
+                    staffdash staff = new staffdash();
                     staff.setVisible(true);
                     staff.setLocationRelativeTo(null);
                     this.dispose();
