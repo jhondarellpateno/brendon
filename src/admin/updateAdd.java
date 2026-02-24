@@ -113,7 +113,7 @@ public class updateAdd extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 290, 140));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 420, 140));
         jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 190, 30));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N

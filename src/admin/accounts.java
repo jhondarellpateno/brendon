@@ -217,25 +217,10 @@ public class accounts extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int selectedRow = jTable1.getSelectedRow();
-
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(null, "Select an account first!");
-            return;
-        }
-
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
-        String id = model.getValueAt(selectedRow, 0).toString();
-
-        config conf = new config();
-
-        String sql = "UPDATE accounts SET status = ? WHERE id = ?";
-        conf.updateRecord(sql, "APPROVED", id);
-
-        model.setValueAt("APPROVED", selectedRow, 5);
-
-        JOptionPane.showMessageDialog(null, "Account Updated!");
+        updateAcc upd = new updateAcc();
+        upd.setLocationRelativeTo(null);
+        upd.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

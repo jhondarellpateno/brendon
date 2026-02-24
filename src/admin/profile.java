@@ -53,6 +53,7 @@ public class profile extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        editprofile = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -110,6 +111,9 @@ public class profile extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 220, -1));
+
+        editprofile.setText("Edit Profile");
+        jPanel2.add(editprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 550, 520));
 
@@ -261,6 +265,7 @@ public class profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton editprofile;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;

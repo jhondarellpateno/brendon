@@ -14,12 +14,12 @@ import main.LOG;
  *
  * @author jhond
  */
-public class updateProd extends javax.swing.JFrame {
+public class editprofile extends javax.swing.JFrame {
 
     /**
-     * Creates new form updateProd
+     * Creates new form editprofile
      */
-    public updateProd() {
+    public editprofile() {
         if (UserSession.getU_id() == 0) {
             JOptionPane.showMessageDialog(null, "Access Denied! Please Login First.");
 
@@ -31,17 +31,7 @@ public class updateProd extends javax.swing.JFrame {
         }
 
         initComponents();
-        this.setLocationRelativeTo(null);
-        user.setText(UserSession.getU_name());
-        type.setText(UserSession.getU_type());
-        email.setText(UserSession.getU_email());
-        displayProd();
-    }
-
-    void displayProd() {
-        config con = new config();
-        String sql = "SELECT * FROM product";
-        con.displayData(sql, jTable1);
+        this.setLocationRelativeTo(null);;
     }
 
     /**
@@ -56,23 +46,16 @@ public class updateProd extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        email = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        user = new javax.swing.JLabel();
-        type = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,53 +64,30 @@ public class updateProd extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 36)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Update Product");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 362, -1));
+        jLabel10.setText("EDIT PROFILE");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 20, 280, -1));
 
-        jToggleButton1.setText("UPDATE");
+        jToggleButton1.setText("UPDATE PROFILE");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 120, 40));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 350, 140));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 190, 30));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 190, 30));
+        jPanel2.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel7.setText("Name:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
+        jLabel7.setText("New name:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 190, 30));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setText("Price:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, -1, -1));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 190, 30));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel8.setText("ID:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setText("New Email:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
+        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 190, 30));
 
         jPanel1.setBackground(new java.awt.Color(167, 120, 79));
-        jPanel1.setAutoscrolls(true);
-        jPanel1.setPreferredSize(new java.awt.Dimension(1160, 790));
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 350));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        email.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        email.setText("Email");
-        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 230, -1));
 
         jLabel11.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -138,16 +98,6 @@ public class updateProd extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 220, -1));
-
-        user.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 36)); // NOI18N
-        user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        user.setText("User");
-        jPanel1.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 125, -1));
-
-        type.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 14)); // NOI18N
-        type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        type.setText("type");
-        jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, -1));
 
         jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -179,15 +129,15 @@ public class updateProd extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, -1));
 
-        jLabel16.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("DASHBOARD");
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel22.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("DASHBOARD");
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
+                jLabel22MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, -1));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,52 +147,31 @@ public class updateProd extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(250, 250, 250)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 520, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        config db = new config();
-        String id = jTextField3.getText();
-        String name = jTextField1.getText();
-        String price = jTextField2.getText();
-
-        if (id.isEmpty() || name.isEmpty() || price.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
-            return;
-        }
-
-        String sql = "UPDATE product SET p_name = ? p_price = ? WHERE p_id = ?";
-
-        db.updateRecord(sql, name, price, id);
-
-        JOptionPane.showMessageDialog(null, "PRODUCT UPDATED SUCCESSFULLY!");
-
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
 
-        LOG out = new LOG ();
+        LOG out = new LOG();
         out.setLocationRelativeTo(null);
         out.setVisible(true);
         this.dispose();
@@ -269,12 +198,52 @@ public class updateProd extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel17MouseClicked
 
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         admindash dash = new admindash();
         dash.setLocationRelativeTo(null);
         dash.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel16MouseClicked
+    }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        config con = new config();
+        int currentID = UserSession.getU_id();
+
+        String newName = jTextField1.getText();
+        String newEmail = jTextField3.getText();
+
+        if (newName.isEmpty() || newEmail.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
+            return;
+        }
+
+        String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
+
+        if (!newEmail.matches(emailPattern)) {
+            JOptionPane.showMessageDialog(null, "Invalid Email!");
+            jTextField1.setText("");
+            jTextField3.setText("");
+
+            return;
+
+        }
+
+        String qry = "SELECT * FROM accounts WHERE email = ?";
+        java.util.List<java.util.Map<String, Object>> result = con.fetchRecords(qry, newEmail);
+
+        if (!result.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
+        } else {
+
+            String sql = "UPDATE accounts SET username = '" + newName + "', email = '" + newEmail + "' WHERE id = " + currentID;
+            con.updateRecord(sql);
+
+            UserSession.setU_name(newName);
+            UserSession.setU_email(newEmail);
+
+            JOptionPane.showMessageDialog(null, "Profile Updated!");
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,44 +262,37 @@ public class updateProd extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(updateProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editprofile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(updateProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editprofile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(updateProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editprofile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(updateProd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editprofile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updateProd().setVisible(true);
+                new editprofile().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel email;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel type;
-    private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 }
