@@ -187,9 +187,9 @@ public class REG extends javax.swing.JFrame {
             password.setText("");
         } else {
             String hash = db.hashPassword(pass);
-            String sql = "INSERT INTO accounts (username, email, password, status, type) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO accounts (username, email, password, status, type, image) VALUES (?, ?, ?, ?, ?, ?)";
 
-            db.addRecord(sql, name, emails, hash, "Pending", "Staff");
+            db.addRecord(sql, name, emails, hash, "Pending", "Staff", "src/images/profile.png");
 
             JOptionPane.showMessageDialog(null, "Account Successfully Registered!");
 
