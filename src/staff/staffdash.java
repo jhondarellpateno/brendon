@@ -6,6 +6,7 @@
 package staff;
 
 import config.UserSession;
+import config.config;
 import javax.swing.JOptionPane;
 import main.LOG;
 
@@ -31,10 +32,45 @@ public class staffdash extends javax.swing.JFrame {
         }
 
         initComponents();
+        displayStaffStats();
         this.setLocationRelativeTo(null);
         user.setText(UserSession.getU_name());
         type.setText(UserSession.getU_type());
         email.setText(UserSession.getU_email());
+    }
+
+    public void displayStaffStats() {
+        config db = new config();
+        int currentStaffId = UserSession.getU_id();
+
+        try {
+            String qryOrderAdded = "SELECT COUNT(*) as total FROM orders WHERE staff_id = ?";
+            java.util.List<java.util.Map<String, Object>> res1 = db.fetchRecords(qryOrderAdded, currentStaffId);
+
+            if (!res1.isEmpty()) {
+                jLabel21.setText(res1.get(0).get("total").toString());
+            }
+
+            String qryStaffSales = "SELECT SUM(o_price) as total FROM orders WHERE staff_id = ?";
+            java.util.List<java.util.Map<String, Object>> res2 = db.fetchRecords(qryStaffSales, currentStaffId);
+
+            if (!res2.isEmpty() && res2.get(0).get("total") != null) {
+                double total = Double.parseDouble(res2.get(0).get("total").toString());
+                jLabel22.setText(String.format("%.2f", total));
+            } else {
+                jLabel22.setText("0.00");
+            }
+
+            String qryGlobalOrders = "SELECT COUNT(*) as total FROM orders";
+            java.util.List<java.util.Map<String, Object>> res3 = db.fetchRecords(qryGlobalOrders);
+
+            if (!res3.isEmpty()) {
+                jLabel23.setText(res3.get(0).get("total").toString());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error loading staff stats: " + e.getMessage());
+        }
     }
 
     /**
@@ -48,6 +84,14 @@ public class staffdash extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -61,7 +105,6 @@ public class staffdash extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(221, 168, 39));
@@ -71,6 +114,43 @@ public class staffdash extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("WELCOME STAFF!");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 20, 362, -1));
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("TOTAL SALES");
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 170, -1));
+
+        jLabel20.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("ORDER ADDED");
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 170, -1));
+
+        jLabel21.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 48)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("#");
+        jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, -1));
+
+        jLabel22.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 48)); // NOI18N
+        jLabel22.setText("#");
+        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 210, -1));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 530, 150));
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("TOTAL ORDERS");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 130, -1));
+
+        jLabel23.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 48)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("#");
+        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 150, -1));
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 150, 140));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 550, 500));
 
@@ -266,14 +346,22 @@ public class staffdash extends javax.swing.JFrame {
     private javax.swing.JLabel email;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel type;
     private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables

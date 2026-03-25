@@ -104,8 +104,8 @@ public class LOG extends javax.swing.JFrame {
         });
         jPanel2.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
 
-        jLabel6.setText("I don't have an account.");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
+        jLabel6.setText("You don't have an account?");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, 20));
 
         jToggleButton2.setText("REGISTER");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +113,7 @@ public class LOG extends javax.swing.JFrame {
                 jToggleButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, -1, -1));
+        jPanel2.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, -1, -1));
         jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 274, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 540, 520));
@@ -128,55 +128,55 @@ public class LOG extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
 
-        String email = username.getText();
+        config config = new config();
+        String email = username.getText().trim();
         String pass = new String(password.getPassword());
 
-        if (email.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please Input Your Email!");
-            return;
-        }
-        if (pass.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please Input Your Password!");
+        if (email.isEmpty() || pass.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter both Email and Password!", "Input Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        config config = new config();
         String hash = config.hashPassword(pass);
         String qry = "SELECT * FROM accounts WHERE email = ? AND password = ?";
-        List<Map<String, Object>> result = config.fetchRecords(qry, email, hash);
+        java.util.List<java.util.Map<String, Object>> result = config.fetchRecords(qry, email, hash);
 
         if (result.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Wrong Username or Password!", "Message", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Wrong Email or Password!", "Login Failed", JOptionPane.ERROR_MESSAGE);
         } else {
-            
-            
-            UserSession.setU_id( ( int )result.get(0).get("id"));
-            UserSession.setU_name(result.get(0).get("username").toString());
-            UserSession.setU_email(result.get(0).get("email").toString());
-            UserSession.setU_type(result.get(0).get("type").toString());
-            UserSession.setU_status(result.get(0).get("status").toString());
-            
-            if (UserSession.getU_status().equals("Pending")) {
-                JOptionPane.showMessageDialog(null, "Account is pending. Please contact admin for approval.");
-            } else if (UserSession.getU_status().equals("Active")){
-                JOptionPane.showMessageDialog(null, "Hello " + UserSession.getU_name() + "!");
+            java.util.Map<String, Object> user = result.get(0);
+            String currentStatus = user.get("status").toString();
+
+            if (currentStatus.equalsIgnoreCase("Pending")) {
+                JOptionPane.showMessageDialog(null, "Account is pending. Please contact admin for approval.", "Access Denied", JOptionPane.WARNING_MESSAGE);
+            } else {
+                UserSession.setU_id(Integer.parseInt(user.get("id").toString()));
+                UserSession.setU_name(user.get("username").toString());
+                UserSession.setU_email(user.get("email").toString());
+                UserSession.setU_type(user.get("type").toString());
+                UserSession.setU_status(currentStatus);
+
+                String imgPath = (user.get("image") != null) ? user.get("image").toString() : "";
+                UserSession.setImagePath(imgPath);
+
+                JOptionPane.showMessageDialog(null, "Hello " + UserSession.getU_name() + "!\nLogin Successful!");
 
                 if (UserSession.getU_type().equals("Admin")) {
                     admindash dash = new admindash();
                     dash.setVisible(true);
                     dash.setLocationRelativeTo(null);
                     this.dispose();
-                    
+
                 } else if (UserSession.getU_type().equals("Staff")) {
                     staffdash staff = new staffdash();
                     staff.setVisible(true);
                     staff.setLocationRelativeTo(null);
                     this.dispose();
                 }
-
-                username.setText("");
-                password.setText("");
             }
+
+            username.setText("");
+            password.setText("");
         }
 
     }//GEN-LAST:event_loginActionPerformed

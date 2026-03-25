@@ -19,6 +19,14 @@ public class addAcc extends javax.swing.JFrame {
     /**
      * Creates new form addAcc
      */
+    private void clearFields() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jPasswordField1.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+    }
+
     public addAcc() {
         if (UserSession.getU_id() == 0) {
             JOptionPane.showMessageDialog(null, "Access Denied! Please Login First.");
@@ -69,10 +77,11 @@ public class addAcc extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         user1 = new javax.swing.JLabel();
         type1 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,15 +186,25 @@ public class addAcc extends javax.swing.JFrame {
         type1.setText("type");
         jPanel3.add(type1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, -1));
 
-        jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("PRODUCTS");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("ORDERS");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
+                jLabel2MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 220, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, -1));
+
+        jLabel16.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("DASHBOARD");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, -1));
 
         jLabel15.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -197,6 +216,16 @@ public class addAcc extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 220, -1));
 
+        jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("PRODUCTS");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 220, -1));
+
         jLabel17.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("PROFILE");
@@ -205,17 +234,7 @@ public class addAcc extends javax.swing.JFrame {
                 jLabel17MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, -1));
-
-        jLabel16.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("DASHBOARD");
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
-            }
-        });
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, -1));
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 220, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 500));
 
@@ -249,7 +268,7 @@ public class addAcc extends javax.swing.JFrame {
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
 
-        LOG out = new LOG ();
+        LOG out = new LOG();
         out.setLocationRelativeTo(null);
         out.setVisible(true);
         this.dispose();
@@ -258,51 +277,43 @@ public class addAcc extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         config db = new config();
 
-        String username = jTextField1.getText();
-        String em = jTextField2.getText();
-        String pass = jPasswordField1.getText();
-        String ty = jTextField3.getText();
-        String stat = jTextField4.getText();
+        String username = jTextField1.getText().trim();
+        String em = jTextField2.getText().trim();
+        String pass = new String(jPasswordField1.getPassword()); 
+        String ty = jTextField3.getText().trim();
+        String stat = jTextField4.getText().trim();
 
         if (username.isEmpty() || em.isEmpty() || pass.isEmpty() || ty.isEmpty() || stat.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
+            JOptionPane.showMessageDialog(null, "All fields are required!", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
+        String emailPattern = "^[A-Za-z0-9+_.-]+@(.+)$";
 
         if (!em.matches(emailPattern)) {
-
-            JOptionPane.showMessageDialog(null, "Invalid Email!");
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jPasswordField1.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-            return;
-
+            JOptionPane.showMessageDialog(null, "Invalid Email Format!", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
         }
 
-        String qry = "SELECT * FROM tbl_user WHERE u_email = ?";
-        java.util.List<java.util.Map<String, Object>> result = db.fetchRecords(qry, jTextField2);
+        String checkQry = "SELECT 1 FROM tbl_user WHERE u_email = ?";
+         java.util.List<java.util.Map<String, Object>> result = db.fetchRecords(checkQry, jTextField2);
 
         if (!result.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
-        } else {
+            JOptionPane.showMessageDialog(null, "Email already exists!", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
+        try {
             String hash = db.hashPassword(pass);
-            String sql = "INSERT INTO accounts ( username, email, password, type, status) VALUES ( ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO accounts (username, email, password, type, status, image) VALUES (?, ?, ?, ?, ?, ?)";
 
-            db.addRecord(sql, username, em, hash, ty, stat);
+            db.addRecord(sql, username, em, hash, ty, stat, "src/images/profile.png");
 
             JOptionPane.showMessageDialog(null, "ACCOUNT ADDED SUCCESSFULLY!");
 
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jPasswordField1.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-
+            clearFields();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Database Error: " + e.getMessage());
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -310,12 +321,19 @@ public class addAcc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
 
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        product p = new product();
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        orders ord = new orders();
+        ord.setLocationRelativeTo(null);
+        ord.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel14MouseClicked
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        admindash dash = new admindash();
+        dash.setLocationRelativeTo(null);
+        dash.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         accounts acc = new accounts();
@@ -324,19 +342,19 @@ public class addAcc extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel15MouseClicked
 
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        product p = new product();
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
+
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         profile pr = new profile();
         pr.setLocationRelativeTo(null);
         pr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel17MouseClicked
-
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        admindash dash = new admindash();
-        dash.setLocationRelativeTo(null);
-        dash.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel16MouseClicked
 
     /**
      * @param args the command line arguments
@@ -386,6 +404,7 @@ public class addAcc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

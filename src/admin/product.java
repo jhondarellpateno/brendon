@@ -66,10 +66,11 @@ public class product extends javax.swing.JFrame {
         type = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -82,6 +83,8 @@ public class product extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -115,35 +118,15 @@ public class product extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 220, -1));
 
-        jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("PRODUCTS");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ORDERS");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
+                jLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 220, -1));
-
-        jLabel15.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("ACCOUNTS");
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 220, -1));
-
-        jLabel17.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("PROFILE");
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel17MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, -1));
 
         jLabel16.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -155,15 +138,45 @@ public class product extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, -1));
 
+        jLabel15.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("ACCOUNTS");
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 220, -1));
+
+        jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("PRODUCTS");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 220, -1));
+
+        jLabel17.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("PROFILE");
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 220, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 500));
 
         jPanel2.setBackground(new java.awt.Color(221, 168, 39));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 36)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("PRODUCTS");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 20, 280, -1));
+        jLabel10.setText("ADD-ONS");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 210, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,7 +188,7 @@ public class product extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 230, 320));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 230, 250));
 
         jButton2.setText("Add");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +224,7 @@ public class product extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 230, 320));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 230, 250));
 
         jButton5.setText("Add");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -222,6 +235,11 @@ public class product extends javax.swing.JFrame {
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
 
         jButton6.setText("Update");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, -1, -1));
 
         jButton7.setText("Delete");
@@ -231,6 +249,16 @@ public class product extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 36)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("PRODUCTS");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 20, 280, -1));
+
+        jLabel13.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("MILKTEA");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 151, 240, 20));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 550, 500));
 
@@ -244,34 +272,6 @@ public class product extends javax.swing.JFrame {
         out.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        product p = new product();
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel14MouseClicked
-
-    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-        accounts acc = new accounts();
-        acc.setLocationRelativeTo(null);
-        acc.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel15MouseClicked
-
-    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-        profile pr = new profile();
-        pr.setLocationRelativeTo(null);
-        pr.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel17MouseClicked
-
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        admindash dash = new admindash();
-        dash.setLocationRelativeTo(null);
-        dash.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         addProduct add = new addProduct();
@@ -288,50 +288,126 @@ public class product extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        updateProd update = new updateProd();
+        update.setLocationRelativeTo(null);
+        update.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int selectedRow = jTable1.getSelectedRow();
 
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(null, "Select a row first!");
+            JOptionPane.showMessageDialog(null, "Please select a product from the table to delete.", "No Selection", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int confirm = JOptionPane.showConfirmDialog(null,
+                "Are you sure you want to delete this product? This action cannot be undone.",
+                "Confirm Deletion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
 
-        String id = model.getValueAt(selectedRow, 0).toString();
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
 
-        config conf = new config();
-        String sql = "DELETE FROM product WHERE p_id = ?";
-        conf.deleteRecord(sql, id);
+        try {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
-        model.removeRow(selectedRow);
+            Object idObj = model.getValueAt(selectedRow, 0);
+            if (idObj == null) {
+                return;
+            }
+            String id = idObj.toString();
 
-        JOptionPane.showMessageDialog(null, "Deleted Successfully!");
+            config conf = new config();
+            String sql = "DELETE FROM product WHERE p_id = ?";
+            conf.deleteRecord(sql, id);
+            model.removeRow(selectedRow);
+
+            JOptionPane.showMessageDialog(null, "Product deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error deleting record: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         int selectedRow = jTable1.getSelectedRow();
 
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(null, "Select a row first!");
+            JOptionPane.showMessageDialog(null, "Please select an addon to delete.", "No Selection", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
+        int modelRow = jTable1.convertRowIndexToModel(selectedRow);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
-        String id = model.getValueAt(selectedRow, 0).toString();
+        int confirm = JOptionPane.showConfirmDialog(null,
+                "Are you sure you want to delete this addon?",
+                "Confirm Delete",
+                JOptionPane.YES_NO_OPTION);
 
-        config conf = new config();
-        String sql = "DELETE FROM addons WHERE a_id = ?";
-        conf.deleteRecord(sql, id);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                String id = model.getValueAt(modelRow, 0).toString();
 
-        model.removeRow(selectedRow);
+                config conf = new config();
+                String sql = "DELETE FROM addons WHERE a_id = ?";
 
-        JOptionPane.showMessageDialog(null, "Deleted Successfully!");
+                conf.deleteRecord(sql, id);
+
+                model.removeRow(modelRow);
+                JOptionPane.showMessageDialog(null, "Addon removed successfully.");
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: Could not delete record.\n" + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        updateAdd update = new updateAdd();
+        update.setLocationRelativeTo(null);
+        update.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        orders ord = new orders();
+        ord.setLocationRelativeTo(null);
+        ord.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        admindash dash = new admindash();
+        dash.setLocationRelativeTo(null);
+        dash.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        accounts acc = new accounts();
+        acc.setLocationRelativeTo(null);
+        acc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        product p = new product();
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        profile pr = new profile();
+        pr.setLocationRelativeTo(null);
+        pr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel17MouseClicked
 
     /**
      * @param args the command line arguments
@@ -376,8 +452,11 @@ public class product extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

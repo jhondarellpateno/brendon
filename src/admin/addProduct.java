@@ -58,10 +58,11 @@ public class addProduct extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,15 +122,25 @@ public class addProduct extends javax.swing.JFrame {
         type.setText("type");
         jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, -1));
 
-        jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("PRODUCTS");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ORDERS");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
+                jLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 220, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, -1));
+
+        jLabel16.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("DASHBOARD");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, -1));
 
         jLabel15.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -141,6 +152,16 @@ public class addProduct extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 220, -1));
 
+        jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("PRODUCTS");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 220, -1));
+
         jLabel17.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("PROFILE");
@@ -149,17 +170,7 @@ public class addProduct extends javax.swing.JFrame {
                 jLabel17MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, -1));
-
-        jLabel16.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("DASHBOARD");
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 220, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,7 +202,7 @@ public class addProduct extends javax.swing.JFrame {
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
 
-        LOG out = new LOG ();
+        LOG out = new LOG();
         out.setLocationRelativeTo(null);
         out.setVisible(true);
         this.dispose();
@@ -200,32 +211,57 @@ public class addProduct extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         config db = new config();
 
-        String name = jTextField2.getText();
-        String price = jTextField3.getText();
+        String name = jTextField2.getText().trim();
+        String priceRaw = jTextField3.getText().trim();
 
-        if (name.isEmpty() || price.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
+        if (name.isEmpty() || priceRaw.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill in both the Name and Price.", "Input Required", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-            String sql = "INSERT INTO product ( p_name, p_price) VALUES (?, ?)";
+        double price;
+        try {
+            price = Double.parseDouble(priceRaw);
 
+            if (price <= 0) {
+                JOptionPane.showMessageDialog(null, "Price must be a positive value.", "Invalid Price", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid format! Please enter a number (e.g., 99.99).", "Number Format Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String sql = "INSERT INTO product (p_name, p_price) VALUES (?, ?)";
+        try {
             db.addRecord(sql, name, price);
 
-            JOptionPane.showMessageDialog(null, "PRODUCT ADDED SUCCESSFULLY!");
+            JOptionPane.showMessageDialog(null, "Product '" + name + "' added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
             jTextField2.setText("");
             jTextField3.setText("");
+            jTextField2.requestFocus();
 
-        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "System Error: Unable to save product.\n" + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        product p = new product();
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        orders ord = new orders();
+        ord.setLocationRelativeTo(null);
+        ord.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel14MouseClicked
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        admindash dash = new admindash();
+        dash.setLocationRelativeTo(null);
+        dash.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         accounts acc = new accounts();
@@ -234,19 +270,19 @@ public class addProduct extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel15MouseClicked
 
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        product p = new product();
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
+
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         profile pr = new profile();
         pr.setLocationRelativeTo(null);
         pr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel17MouseClicked
-
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        admindash dash = new admindash();
-        dash.setLocationRelativeTo(null);
-        dash.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel16MouseClicked
 
     /**
      * @param args the command line arguments
@@ -285,6 +321,7 @@ public class addProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel email;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

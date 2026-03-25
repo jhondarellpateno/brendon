@@ -5,7 +5,9 @@
  */
 package staff;
 
+import admin.editprofile;
 import config.UserSession;
+import config.config;
 import javax.swing.JOptionPane;
 import main.LOG;
 
@@ -31,16 +33,21 @@ public class profile extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationRelativeTo(null);
-        displayUser();
+        config con = new config();
+        con.setProfileIcon(Pic, UserSession.getImagePath());
+
+        if (UserSession.getU_name()
+                != null) {
+            displayUser();
+        }
     }
-    
+
     void displayUser() {
         jLabel19.setText("Name: " + UserSession.getU_name());
         jLabel20.setText("Email: " + UserSession.getU_email());
         jLabel21.setText("Type: " + UserSession.getU_type());
-        jLabel16.setText("Status: " + UserSession.getU_status());
+        jLabel23.setText("Status: " + UserSession.getU_status());
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,10 +67,12 @@ public class profile extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        editprofile = new javax.swing.JToggleButton();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        Pic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -157,6 +166,14 @@ public class profile extends javax.swing.JFrame {
         jLabel10.setText("PROFILE");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 20, 362, -1));
 
+        editprofile.setText("Edit Profile");
+        editprofile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editprofileActionPerformed(evt);
+            }
+        });
+        jPanel2.add(editprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, -1, -1));
+
         jLabel19.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("NAME");
@@ -165,17 +182,7 @@ public class profile extends javax.swing.JFrame {
                 jLabel19MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 220, -1));
-
-        jLabel20.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("NAME");
-        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel20MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 220, -1));
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 220, -1));
 
         jLabel21.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -185,17 +192,32 @@ public class profile extends javax.swing.JFrame {
                 jLabel21MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 220, -1));
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 220, -1));
 
-        jLabel22.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("NAME");
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel20.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("NAME");
+        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
+                jLabel20MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 220, -1));
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 220, -1));
+
+        jLabel23.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("NAME");
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 220, -1));
+
+        Pic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
+        Pic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 62, 80), 3));
+        jPanel2.add(Pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 120, 110));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 550, 500));
 
@@ -208,22 +230,6 @@ public class profile extends javax.swing.JFrame {
         out.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel19MouseClicked
-
-    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel20MouseClicked
-
-    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel21MouseClicked
-
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         staffdash dash = new staffdash();
@@ -271,6 +277,29 @@ public class profile extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel14MouseClicked
 
+    private void editprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editprofileActionPerformed
+        editprofile edit = new editprofile();
+        edit.setLocationRelativeTo(null);
+        edit.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_editprofileActionPerformed
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel20MouseClicked
+
+    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel23MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -307,6 +336,8 @@ public class profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Pic;
+    private javax.swing.JToggleButton editprofile;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -318,7 +349,7 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

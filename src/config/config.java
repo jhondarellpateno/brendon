@@ -1,16 +1,34 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package config;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Base64;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import main.LOG;
 import net.proteanit.sql.DbUtils;
 
+/**
+ *
+ * @author USER25
+ */
 public class config {
 
-    //Connection Method to SQLITE
     public static Connection connectDB() {
         Connection con = null;
         try {
@@ -24,7 +42,7 @@ public class config {
     }
 
     public void addRecord(String sql, Object... values) {
-        try (Connection conn = this.connectDB(); // Use the connectDB method
+        try (Connection conn = config.connectDB();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // Loop through the values and set them in the prepared statement dynamically
@@ -51,7 +69,7 @@ public class config {
             }
 
             pstmt.executeUpdate();
-            System.out.println("Record added successfully!");
+
         } catch (SQLException e) {
             System.out.println("Error adding record: " + e.getMessage());
         }
@@ -107,16 +125,22 @@ public class config {
         }
     }
 
-    public void displayData(String sql, javax.swing.JTable table) {
+    public void displayData(String sql, javax.swing.JTable table, Object... values) {
         try (Connection conn = connectDB();
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                ResultSet rs = pstmt.executeQuery()) {
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            // This line automatically maps the Resultset to your JTable
-            table.setModel(DbUtils.resultSetToTableModel(rs));
+            // Set the parameters for the search
+            for (int i = 0; i < values.length; i++) {
+                pstmt.setObject(i + 1, values[i]);
+            }
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                // Automatically maps the filtered ResultSet to your JTable
+                table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
 
         } catch (SQLException e) {
-            System.out.println("Error displaying data: " + e.getMessage());
+            System.out.println("Error filtering data: " + e.getMessage());
         }
     }
 
@@ -173,4 +197,28 @@ public class config {
             System.out.println("Error deleting record: " + e.getMessage());
         }
     }
+
+    public String convertImageToBase64(String imagePath) throws IOException {
+        Path path = Paths.get(imagePath);
+        byte[] imageBytes = Files.readAllBytes(path);
+        // This converts the binary data into a standard Base64 string
+        return Base64.getEncoder().encodeToString(imageBytes);
+    }
+    
+    public void setProfileIcon(JLabel label, String path) {
+    if (path == null || path.isEmpty()) {
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png")));
+        return;
+    }
+    
+    try {
+        ImageIcon icon = new ImageIcon(path);
+        // Resizing the image to fit the label dimensions
+        Image img = icon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        label.setIcon(new ImageIcon(img));
+    } catch (Exception e) {
+        System.out.println("Error setting icon: " + e.getMessage());
+    }
+}
+
 }

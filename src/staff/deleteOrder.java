@@ -37,9 +37,9 @@ public class deleteOrder extends javax.swing.JFrame {
         email.setText(UserSession.getU_email());
         displayOrder();
     }
-    
+
     void displayOrder() {
-        config con = new config ();
+        config con = new config();
         String sql = "SELECT * FROM orders";
         con.displayData(sql, jTable1);
     }
@@ -226,20 +226,33 @@ public class deleteOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        String oid = jTextField2.getText();
+        String oid = jTextField2.getText().trim();
 
-        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this" + oid + "?", "Delete Warning", JOptionPane.YES_NO_OPTION);
+        if (oid.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter an Item ID to delete.", "Input Required", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(null,
+                "Are you sure you want to delete Item ID: " + oid + "?",
+                "Confirm Deletion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
 
         if (confirm == JOptionPane.YES_OPTION) {
-            config conf = new config();
+            try {
+                config conf = new config();
 
-            String sql = "DELETE FROM items WHERE i_id = ?";
+                // 4. Database Operation
+                String sql = "DELETE FROM orders WHERE o_id = ?";
+                conf.deleteRecord(sql, oid);
 
-            conf.deleteRecord(sql, oid);
+                jTextField2.setText("");
+                JOptionPane.showMessageDialog(null, "Order ID# " + oid + " has been removed.", "Deleted Successfully", JOptionPane.INFORMATION_MESSAGE);
 
-            jTextField2.setText("");
-
-            JOptionPane.showMessageDialog(null, "Order deleted successfully!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "System Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 

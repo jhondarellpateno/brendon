@@ -37,9 +37,9 @@ public class updateOrder extends javax.swing.JFrame {
         email.setText(UserSession.getU_email());
         displayOrder();
     }
-    
+
     void displayOrder() {
-        config con = new config ();
+        config con = new config();
         String sql = "SELECT * FROM orders";
         con.displayData(sql, jTable1);
     }
@@ -249,16 +249,35 @@ public class updateOrder extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         config con = new config();
-        String orderID = jTextField1.getText();
-        String newProductID = jTextField2.getText();  
-        String newAddonID = jTextField3.getText(); 
+
+        String orderID = jTextField1.getText().trim();
+        String newProductID = jTextField2.getText().trim();
+        String newAddonID = jTextField3.getText().trim();
         String newQty = jSpinner1.getValue().toString();
 
-        String sql = "UPDATE orders SET " + "p_name = (SELECT p_name FROM product WHERE p_id = " + newProductID + "), " + "a_name = (SELECT p_name FROM addons WHERE p_id = " + newAddonID + "), " + "qty = " + newQty + " " + "WHERE o_id = " + orderID;
+        if (orderID.isEmpty() || newProductID.isEmpty() || newAddonID.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Order ID, Product ID, and Addon ID are required!", "Missing Data", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-        con.updateRecord(sql);
+        String sql = "UPDATE orders SET "
+                + "p_name = (SELECT p_name FROM product WHERE p_id = ?), "
+                + "a_name = (SELECT a_name FROM addons WHERE a_id = ?), "
+                + "qty = ? "
+                + "WHERE o_id = ?";
 
-        JOptionPane.showMessageDialog(this, "Order " + orderID + " has been updated!");
+        try {
+            con.updateRecord(sql, newProductID, newAddonID, newQty, orderID);
+            JOptionPane.showMessageDialog(this, "Order #" + orderID + " has been updated successfully!", "Update Success", JOptionPane.INFORMATION_MESSAGE);
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jSpinner1.setValue(1);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error updating order: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked

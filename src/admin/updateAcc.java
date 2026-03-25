@@ -54,11 +54,7 @@ public class updateAcc extends javax.swing.JFrame {
         email = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -74,6 +70,11 @@ public class updateAcc extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,30 +99,10 @@ public class updateAcc extends javax.swing.JFrame {
         user.setText("User");
         jPanel1.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 125, -1));
 
-        jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("PRODUCTS");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 220, -1));
-
         type.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 14)); // NOI18N
         type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         type.setText("type");
         jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, -1));
-
-        jLabel15.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("ACCOUNTS");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 220, -1));
-
-        jLabel16.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("DASHBOARD");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, -1));
-
-        jLabel17.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("PROFILE");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, -1));
 
         jPanel2.setBackground(new java.awt.Color(221, 168, 39));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -178,6 +159,56 @@ public class updateAcc extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 560, 500));
 
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ORDERS");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, -1));
+
+        jLabel16.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("DASHBOARD");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, -1));
+
+        jLabel15.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("ACCOUNTS");
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 220, -1));
+
+        jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("PRODUCTS");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 220, -1));
+
+        jLabel17.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("PROFILE");
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 220, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -186,49 +217,87 @@ public class updateAcc extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         config db = new config();
-        String id = jTextField3.getText();
-        String name = jTextField1.getText();
-        String email = jTextField2.getText();
-        String type = jTextField4.getText();
-        String status = jTextField5.getText();
 
+// 1. Get and trim data
+        String id = jTextField3.getText().trim();
+        String name = jTextField1.getText().trim();
+        String email = jTextField2.getText().trim();
+        String type = jTextField4.getText().trim();
+        String status = jTextField5.getText().trim();
 
-        String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
-
-        if (!email.matches(emailPattern)) {
-            JOptionPane.showMessageDialog(null, "Invalid Email!");
-            jTextField3.setText("");
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField4.setText("");
-            jTextField5.setText("");
+// 2. Validation: Ensure ID exists and fields aren't empty
+        if (id.isEmpty() || name.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ID, Name, and Email are required for updating!");
             return;
-
         }
 
-        String qry = "SELECT * FROM accounts WHERE email = ?";
-        java.util.List<java.util.Map<String, Object>> result = db.fetchRecords(qry, email);
+        String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
+        if (!email.matches(emailPattern)) {
+            JOptionPane.showMessageDialog(null, "Invalid Email Format!");
+            return;
+        }
+
+        String checkQry = "SELECT 1 FROM accounts WHERE email = ? AND id != ?";
+        java.util.List<java.util.Map<String, Object>> result = db.fetchRecords(checkQry, email);
 
         if (!result.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
-            jTextField3.setText("");
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField4.setText("");
-            jTextField5.setText("");
-        } else {
+            JOptionPane.showMessageDialog(null, "Email is already taken by another user!");
+            return;
+        }
 
+        try {
             String sql = "UPDATE accounts SET username = ?, email = ?, type = ?, status = ? WHERE id = ?";
 
             db.updateRecord(sql, name, email, type, status, id);
 
-            JOptionPane.showMessageDialog(null, "ADDONS UPDATED SUCCESSFULLY!");
+            JOptionPane.showMessageDialog(null, "ACCOUNT UPDATED SUCCESSFULLY!");
 
+            jTextField3.setText("");
             jTextField1.setText("");
             jTextField2.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Update Failed: " + e.getMessage());
         }
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        orders ord = new orders();
+        ord.setLocationRelativeTo(null);
+        ord.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        admindash dash = new admindash();
+        dash.setLocationRelativeTo(null);
+        dash.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        accounts acc = new accounts();
+        acc.setLocationRelativeTo(null);
+        acc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        product p = new product();
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        profile pr = new profile();
+        pr.setLocationRelativeTo(null);
+        pr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel17MouseClicked
 
     /**
      * @param args the command line arguments
@@ -267,6 +336,7 @@ public class updateAcc extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel email;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -281,16 +281,66 @@ public class addOrder extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         config con = new config();
-        String productId = jTextField2.getText();
-        String addonId = jTextField3.getText();  
-        String quantity = jSpinner1.getValue().toString();
 
+        String productId = jTextField2.getText().trim();
+        String addonId = jTextField3.getText().trim();
+        int quantity = (Integer) jSpinner1.getValue(); 
 
-        String sql = "INSERT INTO orders (p_name, a_name, o_quan) VALUES (" + "(SELECT p_name FROM product WHERE p_id = " + productId + "), " + "(SELECT a_name FROM addons WHERE a_id = " + addonId + "), " + quantity + ")";
+        if (productId.isEmpty() || addonId.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Product and Addon IDs are required!");
+            return;
+        }
 
-        con.addRecord(sql);
+        try {
+            String priceSql = "SELECT "
+                    + "(SELECT p_price FROM product WHERE p_id = ?) AS prodPrice, "
+                    + "(SELECT a_price FROM addons WHERE a_id = ?) AS addonPrice";
 
-        javax.swing.JOptionPane.showMessageDialog(this, "Order Recorded Successfully!");
+            java.util.List<java.util.Map<String, Object>> priceRes = con.fetchRecords(priceSql, productId, addonId);
+
+            if (priceRes.isEmpty() || priceRes.get(0).get("prodPrice") == null) {
+                JOptionPane.showMessageDialog(this, "Product or Addon ID not found!");
+                return;
+            }
+
+            double pPrice = Double.parseDouble(priceRes.get(0).get("prodPrice").toString());
+            double aPrice = Double.parseDouble(priceRes.get(0).get("addonPrice").toString());
+            double totalPrice = (pPrice + aPrice) * quantity;
+
+            String sql = "INSERT INTO orders (p_name, a_name, o_quan, o_price, staff_id) VALUES ("
+                    + "(SELECT p_name FROM product WHERE p_id = ?), "
+                    + "(SELECT a_name FROM addons WHERE a_id = ?), "
+                    + "?, ?, ?)";
+
+            con.addRecord(sql, productId, addonId, quantity, totalPrice, UserSession.getU_id());
+
+            String receiptText = "           OFFICIAL RECEIPT           \n"
+                    + "--------------------------------------\n"
+                    + "Order Date: " + new java.util.Date() + "\n"
+                    + "Staff:      " + UserSession.getU_name() + "\n"
+                    + "--------------------------------------\n"
+                    + "Product ID: " + productId + " (₱" + pPrice + ")\n"
+                    + "Addon ID:   " + addonId + " (₱" + aPrice + ")\n"
+                    + "Quantity:   " + quantity + "\n"
+                    + "--------------------------------------\n"
+                    + "TOTAL AMOUNT: ₱" + String.format("%.2f", totalPrice) + "\n"
+                    + "--------------------------------------\n"
+                    + "        THANK YOU FOR BUYING!        ";
+
+            javax.swing.JTextArea textArea = new javax.swing.JTextArea(receiptText);
+            textArea.setEditable(false);
+            textArea.setFont(new java.awt.Font("Monospaced", java.awt.Font.PLAIN, 12));
+            javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(textArea);
+
+            JOptionPane.showMessageDialog(this, scrollPane, "Order Receipt", JOptionPane.PLAIN_MESSAGE);
+
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jSpinner1.setValue(1);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
